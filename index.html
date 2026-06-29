@@ -920,14 +920,50 @@ document.getElementById('save-cancel').addEventListener('click', () => saveModal
 saveModal.addEventListener('click', (e) => { if (e.target === saveModal) saveModal.classList.remove('show'); });
 nameInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') document.getElementById('save-confirm').click(); });
 
-document.getElementById('save-confirm').addEventListener('click', () => {
-  const name = nameInput.value.trim();
+document.getElementById('save-confirm').addEventListener('click', async () => {
+  const name = document.getElementById('predictor-name').value.trim();
+  const saveNote = document.getElementById('save-note');
+  const saveModal = document.getElementById('save-modal');
+  
   if (!name) {
     saveNote.textContent = 'Please enter a name.';
     saveNote.className = 'modal-note error';
-    nameInput.focus();
+    document.getElementById('predictor-name').focus();
     return;
   }
+
+  const snap = snapshotState();
+  const payload = {
+    name: name,
+    picks_made: countPicks(snap),
+    champion: champFromSnapshot(snap),
+    bracket_data: snap
+  };
+
+  const SUPABASE_URL = https://mnwqtpjkuvrydbrsfdsk.supabase.co;
+  const SUPABASE_ANON_KEY = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1ud3F0cGprdXZyeWRicnNmZHNrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI3MzU2NDgsImV4cCI6MjA5ODMxMTY0OH0.ejH-mFDfDKHWHoRhK6x_Ujvvg6jXdaB6zRGEf2poyWo;
+
+  try {
+    const response = await fetch(`${SUPABASE_URL}/rest/v1/predictions`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+      },
+      body: JSON.stringify(payload)
+    });
+
+    if (response.ok) {
+      saveNote.textContent = `Saved!`;
+      saveNote.className = 'modal-note success';
+      setTimeout(() => saveModal.classList.remove('show'), 900);
+    }
+  } catch (e) {
+    saveNote.textContent = 'Error saving.';
+    saveNote.className = 'modal-note error';
+  }
+});
 
   const list = loadAllPredictions();
   const snap = snapshotState();
