@@ -158,155 +158,57 @@
   }
   .team-btn:hover:not(:disabled) { background: var(--surface2); }
   .team-btn:disabled { cursor: default; }
-
-  /* Flag image */
-  .team-btn .flag-img {
-    width: 24px; height: 17px;
-    border-radius: 3px;
-    object-fit: cover;
-    flex-shrink: 0;
-    box-shadow: 0 1px 4px rgba(0,0,0,.5);
-    border: 1px solid rgba(255,255,255,.08);
-    background: var(--border); /* placeholder while loading */
-  }
-
+  .team-btn .flag-img { width: 24px; height: 17px; border-radius: 3px; object-fit: cover; flex-shrink: 0; box-shadow: 0 1px 4px rgba(0,0,0,.5); border: 1px solid rgba(255,255,255,.08); background: var(--border); }
   .team-btn .tname { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .team-btn .chk   { font-size: 0.72rem; color: var(--winner); opacity: 0; transition: opacity .18s; flex-shrink:0; }
-
   .team-btn.winner { background: rgba(34,197,94,.13); color: var(--winner); font-weight: 700; }
   .team-btn.winner .chk { opacity: 1; }
   .team-btn.loser  { color: var(--loser); text-decoration: line-through; text-decoration-color: var(--loser); }
   .team-btn.tbd    { cursor: default; color: var(--muted); font-style: italic; }
 
-  @keyframes flashWin {
-    0%   { background: rgba(34,197,94,.45); }
-    100% { background: rgba(34,197,94,.13); }
-  }
+  @keyframes flashWin { 0% { background: rgba(34,197,94,.45); } 100% { background: rgba(34,197,94,.13); } }
   .team-btn.winner.flash { animation: flashWin .55s ease-out forwards; }
-
   .card-divider { height: 1px; background: var(--border); margin: 0 11px; }
-
-  .vs-pip {
-    position: absolute; right: 8px; top: 50%;
-    transform: translateY(-50%);
-    font-size: 0.55rem; font-weight: 800; letter-spacing: .5px;
-    color: var(--muted); pointer-events: none; z-index: 3;
-  }
+  .vs-pip { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); font-size: 0.55rem; font-weight: 800; letter-spacing: .5px; color: var(--muted); pointer-events: none; z-index: 3; }
 
   /* ── CONNECTORS ── */
-  .conn-h {
-    position: absolute; right: calc(-1 * var(--col-gap));
-    width: var(--col-gap); height: 1px;
-    background: var(--line); top: 50%; z-index: 1;
-  }
-  /* Mirrored connectors for the right-hand bracket half */
-  .conn-h.mirror {
-    right: auto; left: calc(-1 * var(--col-gap));
-  }
-  .conn-v.mirror {
-    right: auto !important; left: calc(-1 * var(--col-gap)) !important;
-  }
+  .conn-h { position: absolute; right: calc(-1 * var(--col-gap)); width: var(--col-gap); height: 1px; background: var(--line); top: 50%; z-index: 1; }
+  .conn-h.mirror { right: auto; left: calc(-1 * var(--col-gap)); }
+  .conn-v.mirror { right: auto !important; left: calc(-1 * var(--col-gap)) !important; }
 
-  /* ── THIRD PLACE (sits under the Final column) ── */
-  #third-section {
-    margin-top: 28px;
-    padding-top: 18px;
-    border-top: 1px dashed var(--border);
-    display: flex; flex-direction: column; align-items: center; gap: 10px;
-    width: var(--card-w);
-  }
-  .third-hdr {
-    font-size: 0.64rem; font-weight: 800; letter-spacing: 1.3px;
-    text-transform: uppercase; color: var(--muted);
-    padding-bottom: 7px;
-    width: max-content; max-width: 220px; text-align: center;
-    white-space: nowrap;
-  }
+  /* ── THIRD PLACE ── */
+  #third-section { margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border); display: flex; flex-direction: column; align-items: center; gap: 10px; width: var(--card-w); }
+  .third-hdr { font-size: 0.64rem; font-weight: 800; letter-spacing: 1.3px; text-transform: uppercase; color: var(--muted); padding-bottom: 7px; width: max-content; max-width: 220px; text-align: center; white-space: nowrap; }
 
   /* ── CHAMPION ── */
-  #champ-overlay {
-    display: none; position: fixed; inset: 0;
-    background: rgba(8,15,30,.94); z-index: 999;
-    align-items: center; justify-content: center; flex-direction: column; gap: 0;
-  }
+  #champ-overlay { display: none; position: fixed; inset: 0; background: rgba(8,15,30,.94); z-index: 999; align-items: center; justify-content: center; flex-direction: column; gap: 0; }
   #champ-overlay.show { display: flex; }
-  .champ-card {
-    background: var(--surface); border: 2px solid var(--gold);
-    border-radius: 22px; padding: 52px 72px;
-    box-shadow: 0 0 80px rgba(245,158,11,.22);
-    display: flex; flex-direction: column; align-items: center; gap: 16px;
-    animation: popIn .45s cubic-bezier(.34,1.56,.64,1) both;
-  }
-  @keyframes popIn {
-    from { opacity:0; transform:scale(.65) translateY(32px); }
-    to   { opacity:1; transform:scale(1)   translateY(0); }
-  }
+  .champ-card { background: var(--surface); border: 2px solid var(--gold); border-radius: 22px; padding: 52px 72px; box-shadow: 0 0 80px rgba(245,158,11,.22); display: flex; flex-direction: column; align-items: center; gap: 16px; animation: popIn .45s cubic-bezier(.34,1.56,.64,1) both; }
+  @keyframes popIn { from { opacity:0; transform:scale(.65) translateY(32px); } to { opacity:1; transform:scale(1) translateY(0); } }
   .champ-eyebrow { font-size: 0.72rem; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); }
   .champ-trophy  { font-size: 4rem; }
-  .champ-flag-img {
-    width: 120px; height: 80px; border-radius: 8px;
-    object-fit: cover; box-shadow: 0 4px 20px rgba(0,0,0,.5);
-    border: 2px solid rgba(255,255,255,.15);
-  }
+  .champ-flag-img { width: 120px; height: 80px; border-radius: 8px; object-fit: cover; box-shadow: 0 4px 20px rgba(0,0,0,.5); border: 2px solid rgba(255,255,255,.15); }
   .champ-name { font-size: 2.4rem; font-weight: 900; letter-spacing: -1px; }
-  #btn-close-champ {
-    margin-top: 22px; background: transparent;
-    border: 1px solid var(--border); border-radius: 9px;
-    color: var(--muted); padding: 10px 26px;
-    font-size: 0.85rem; cursor: pointer; transition: all .2s;
-  }
+  #btn-close-champ { margin-top: 22px; background: transparent; border: 1px solid var(--border); border-radius: 9px; color: var(--muted); padding: 10px 26px; font-size: 0.85rem; cursor: pointer; transition: all .2s; }
   #btn-close-champ:hover { border-color: var(--text); color: var(--text); }
 
-  /* ── CONFETTI ── */
   #confetti-canvas { position: fixed; inset: 0; pointer-events: none; z-index: 998; display: none; }
 
-  @media (max-width: 640px) {
-    header { padding: 12px 14px; }
-    #bracket-outer { padding-left: 14px; padding-right: 14px; }
-    #search-input { width: 130px; }
-  }
+  @media (max-width: 640px) { header { padding: 12px 14px; } #bracket-outer { padding-left: 14px; padding-right: 14px; } #search-input { width: 130px; } }
 
   /* ── SAVE PREDICTION ── */
-  #btn-save {
-    background: var(--accent); border: 1px solid var(--accent);
-    border-radius: 8px; color: #fff; font-weight: 700;
-    padding: 7px 14px; font-size: 0.83rem; cursor: pointer;
-    transition: all .2s; white-space: nowrap;
-  }
+  #btn-save { background: var(--accent); border: 1px solid var(--accent); border-radius: 8px; color: #fff; font-weight: 700; padding: 7px 14px; font-size: 0.83rem; cursor: pointer; transition: all .2s; white-space: nowrap; }
   #btn-save:hover { background: #2563eb; border-color: #2563eb; }
-  #btn-saved-list {
-    background: transparent; border: 1px solid var(--border);
-    border-radius: 8px; color: var(--muted);
-    padding: 7px 14px; font-size: 0.83rem; cursor: pointer;
-    transition: all .2s; white-space: nowrap;
-  }
-  #btn-saved-list:hover { border-color: var(--accent); color: var(--accent); }
 
-  .modal-overlay {
-    display: none; position: fixed; inset: 0;
-    background: rgba(8,15,30,.78); z-index: 500;
-    align-items: center; justify-content: center; padding: 20px;
-  }
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(8,15,30,.78); z-index: 500; align-items: center; justify-content: center; padding: 20px; }
   .modal-overlay.show { display: flex; }
-  .modal-card {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 16px; padding: 28px; width: 100%; max-width: 380px;
-    box-shadow: 0 20px 60px rgba(0,0,0,.5);
-    animation: popIn .3s cubic-bezier(.34,1.56,.64,1) both;
-  }
+  .modal-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 28px; width: 100%; max-width: 380px; box-shadow: 0 20px 60px rgba(0,0,0,.5); animation: popIn .3s cubic-bezier(.34,1.56,.64,1) both; }
   .modal-title { font-size: 1.05rem; font-weight: 800; margin-bottom: 6px; }
   .modal-sub { font-size: 0.8rem; color: var(--muted); margin-bottom: 18px; }
-  #predictor-name {
-    width: 100%; background: var(--surface2); border: 1px solid var(--border);
-    border-radius: 9px; padding: 11px 13px; color: var(--text);
-    font-size: 0.92rem; outline: none; margin-bottom: 14px;
-  }
+  #predictor-name { width: 100%; background: var(--surface2); border: 1px solid var(--border); border-radius: 9px; padding: 11px 13px; color: var(--text); font-size: 0.92rem; outline: none; margin-bottom: 14px; }
   #predictor-name:focus { border-color: var(--accent); }
   .modal-actions { display: flex; gap: 10px; justify-content: flex-end; }
-  .modal-btn {
-    border-radius: 8px; padding: 9px 18px; font-size: 0.84rem;
-    cursor: pointer; border: 1px solid var(--border); transition: all .2s;
-  }
+  .modal-btn { border-radius: 8px; padding: 9px 18px; font-size: 0.84rem; cursor: pointer; border: 1px solid var(--border); transition: all .2s; }
   .modal-btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 700; }
   .modal-btn.primary:hover { background: #2563eb; }
   .modal-btn.ghost { background: transparent; color: var(--muted); }
@@ -314,24 +216,6 @@
   .modal-note { font-size: 0.75rem; color: var(--muted); margin-top: 12px; line-height: 1.5; }
   .modal-note.error { color: #ef4444; }
   .modal-note.success { color: var(--winner); }
-
-  .saved-list { display: flex; flex-direction: column; gap: 8px; max-height: 340px; overflow-y: auto; margin-bottom: 4px; }
-  .saved-item {
-    display: flex; align-items: center; justify-content: space-between; gap: 10px;
-    background: var(--surface2); border: 1px solid var(--border);
-    border-radius: 9px; padding: 10px 13px;
-  }
-  .saved-item .si-name { font-weight: 700; font-size: 0.88rem; }
-  .saved-item .si-meta { font-size: 0.72rem; color: var(--muted); margin-top: 2px; }
-  .saved-item-actions { display: flex; gap: 6px; flex-shrink: 0; }
-  .si-btn {
-    font-size: 0.72rem; border-radius: 6px; padding: 5px 10px;
-    cursor: pointer; border: 1px solid var(--border); background: transparent; color: var(--muted);
-    transition: all .15s;
-  }
-  .si-btn.load:hover { border-color: var(--accent); color: var(--accent); }
-  .si-btn.del:hover  { border-color: #ef4444; color: #ef4444; }
-  .saved-empty { font-size: 0.83rem; color: var(--muted); text-align: center; padding: 18px 0; }
 </style>
 </head>
 <body>
@@ -345,20 +229,13 @@
   <div class="header-right">
     <input type="text" id="search-input" placeholder="🔍 Search team…" autocomplete="off"/>
     <button id="btn-save">💾 Save Prediction</button>
-    <button id="btn-saved-list">📋 Saved</button>
     <button id="btn-reset">🔄 Reset</button>
   </div>
 </header>
 
-<div id="round-labels-outer">
-  <div id="round-labels"></div>
-</div>
+<div id="round-labels-outer"><div id="round-labels"></div></div>
+<div id="bracket-outer"><div class="bracket-wrap" id="bracket-wrap"></div></div>
 
-<div id="bracket-outer">
-  <div class="bracket-wrap" id="bracket-wrap"></div>
-</div>
-
-<!-- third-section is moved into the Final column by JS at build time -->
 <div id="third-section">
   <div class="third-hdr">🥉 Third Place Match</div>
   <div id="third-card-wrap"></div>
@@ -374,46 +251,24 @@
   <button id="btn-close-champ">View Bracket</button>
 </div>
 
-<!-- ── SAVE PREDICTION MODAL ── -->
 <div class="modal-overlay" id="save-modal">
   <div class="modal-card">
     <div class="modal-title">💾 Save Your Prediction</div>
-    <div class="modal-sub">Enter your name to save this bracket so you can come back to it later.</div>
+    <div class="modal-sub">Enter your name to submit your bracket.</div>
     <input type="text" id="predictor-name" placeholder="Your name" autocomplete="off" maxlength="40"/>
     <div class="modal-actions">
       <button class="modal-btn ghost" id="save-cancel">Cancel</button>
-      <button class="modal-btn primary" id="save-confirm">Save</button>
+      <button class="modal-btn primary" id="save-confirm">Submit</button>
     </div>
     <div class="modal-note" id="save-note"></div>
-  </div>
-</div>
-
-<!-- ── SAVED PREDICTIONS MODAL ── -->
-<div class="modal-overlay" id="list-modal">
-  <div class="modal-card" style="max-width:420px;">
-    <div class="modal-title">📋 Saved Predictions</div>
-    <div class="modal-sub">Load a saved bracket or delete one you no longer need.</div>
-    <div class="saved-list" id="saved-list"></div>
-    <div class="modal-actions">
-      <button class="modal-btn ghost" id="list-close">Close</button>
-    </div>
   </div>
 </div>
 
 <canvas id="confetti-canvas"></canvas>
 
 <script>
-/* ═══════════════════════════════════════════════════
-   FLAG CDN helper — flagcdn.com uses ISO 3166-1 alpha-2
-   ═══════════════════════════════════════════════════ */
-function flagUrl(code, size) {
-  // size: 'w40' | 'w80' | 'w160'
-  return `https://flagcdn.com/${size}/${code.toLowerCase()}.png`;
-}
+function flagUrl(code, size) { return `https://flagcdn.com/${size}/${code.toLowerCase()}.png`; }
 
-/* ═══════════════════════════════════════════════════
-   TEAMS  — n=name, c=ISO country code
-   ═══════════════════════════════════════════════════ */
 const R32 = [
   { t1:{ n:"South Africa",   c:"za" }, t2:{ n:"Canada",          c:"ca" } },
   { t1:{ n:"Netherlands",    c:"nl" }, t2:{ n:"Morocco",          c:"ma" } },
@@ -430,507 +285,173 @@ const R32 = [
   { t1:{ n:"Switzerland",    c:"ch" }, t2:{ n:"Algeria",          c:"dz" } },
   { t1:{ n:"Colombia",       c:"co" }, t2:{ n:"Ghana",            c:"gh" } },
   { t1:{ n:"Australia",      c:"au" }, t2:{ n:"Egypt",            c:"eg" } },
-  { t1:{ n:"Argentina",      c:"ar" }, t2:{ n:"Cabo Verde",       c:"cv" } },
+  { t1:{ n:"Argentina",      c:"ar" }, t2:{ n:"Cabo Verde",       c:"cv" } }
 ];
 
-/* ═══════════════════════════════════════════════════
-   CONSTANTS
-   ═══════════════════════════════════════════════════ */
 const ROUND_SIZES = [16, 8, 4, 2, 1];
 const ROUND_NAMES = ["Round of 32", "Round of 16", "Quarterfinals", "Semifinals", "Final"];
-const CARD_H   = 66;   // px — matches --card-h
-const SLOT_GAP = 18;   // px between slots in R32
+const CARD_H   = 66;
+const SLOT_GAP = 18;
 
-function slotH(r) {
-  const n = Math.pow(2, r);
-  return n * CARD_H + (n - 1) * SLOT_GAP;
-}
+function slotH(r) { return Math.pow(2, r) * CARD_H + (Math.pow(2, r) - 1) * SLOT_GAP; }
 
-/* ═══════════════════════════════════════════════════
-   STATE
-   ═══════════════════════════════════════════════════ */
-let state;
-let sfLosers   = [null, null];
-let thirdState = { t1: null, t2: null, winner: null };
+let state, sfLosers = [null, null], thirdState = { t1: null, t2: null, winner: null };
 
 function initState() {
-  state = ROUND_SIZES.map((sz, r) =>
-    Array.from({ length: sz }, (_, m) => {
-      if (r === 0) return { t1:{...R32[m].t1}, t2:{...R32[m].t2}, winner:null, loser:null };
-      return { t1:null, t2:null, winner:null, loser:null };
-    })
-  );
-  sfLosers   = [null, null];
-  thirdState = { t1:null, t2:null, winner:null };
+  state = ROUND_SIZES.map((sz, r) => Array.from({ length: sz }, (_, m) => {
+    if (r === 0) return { t1:{...R32[m].t1}, t2:{...R32[m].t2}, winner:null, loser:null };
+    return { t1:null, t2:null, winner:null, loser:null };
+  }));
+  sfLosers = [null, null]; thirdState = { t1:null, t2:null, winner:null };
 }
 
-/* ═══════════════════════════════════════════════════
-   BUILD
-   ═══════════════════════════════════════════════════ */
-const bracketWrap   = document.getElementById('bracket-wrap');
-const roundLabels   = document.getElementById('round-labels');
-const thirdCardWrap = document.getElementById('third-card-wrap');
-const thirdSection   = document.getElementById('third-section');
+const bracketWrap = document.getElementById('bracket-wrap'), roundLabels = document.getElementById('round-labels');
+const thirdCardWrap = document.getElementById('third-card-wrap'), thirdSection = document.getElementById('third-section');
 
-// Half-membership: for rounds 0-3, which match indices belong to the LEFT half.
-// Left half = first half of indices at that round (mirrors how R32 0-7 feed SF 0).
-function leftCount(r) { return ROUND_SIZES[r] / 2; } // r=0:8, r=1:4, r=2:2, r=3:1
+function leftCount(r) { return ROUND_SIZES[r] / 2; }
 
 function build() {
-  bracketWrap.innerHTML = '';
-  roundLabels.innerHTML = '';
-
-  // ── Round labels: Left rounds (0→3), Final in center, Right rounds (3→0) ──
+  bracketWrap.innerHTML = ''; roundLabels.innerHTML = '';
   for (let r = 0; r < 4; r++) roundLabels.appendChild(makeLabel(r));
   roundLabels.appendChild(makeLabel(4));
   for (let r = 3; r >= 0; r--) roundLabels.appendChild(makeLabel(r, true));
 
-  const leftHalf  = document.createElement('div');
-  leftHalf.className = 'bracket-half left';
-  const rightHalf = document.createElement('div');
-  rightHalf.className = 'bracket-half right';
-  const center = document.createElement('div');
-  center.className = 'bracket-center';
-  center.id = 'col-4';
-
-  for (let r = 0; r < 4; r++) {
-    const lc = leftCount(r);
-    leftHalf.appendChild(buildColumn(r, 0, lc, false));
-    rightHalf.appendChild(buildColumn(r, lc, lc, true));
-  }
-
-  // Center: Final card on top, 3rd place below
+  const leftHalf = document.createElement('div'), rightHalf = document.createElement('div'), center = document.createElement('div');
+  leftHalf.className = 'bracket-half left'; rightHalf.className = 'bracket-half right'; center.className = 'bracket-center';
+  
+  for (let r = 0; r < 4; r++) { leftHalf.appendChild(buildColumn(r, 0, leftCount(r), false)); rightHalf.appendChild(buildColumn(r, leftCount(r), leftCount(r), true)); }
   center.appendChild(buildColumn(4, 0, 1, false, true));
-
-  bracketWrap.appendChild(leftHalf);
-  bracketWrap.appendChild(center);
-  bracketWrap.appendChild(rightHalf);
-
+  
+  bracketWrap.appendChild(leftHalf); bracketWrap.appendChild(center); bracketWrap.appendChild(rightHalf);
   center.appendChild(thirdSection);
-
-  buildThird();
-  updateProgress();
-  updateRoundLabels();
+  buildThird(); updateProgress(); updateRoundLabels();
 }
 
-function makeLabel(r, mirrored) {
-  const lbl = document.createElement('div');
-  lbl.className = 'round-label';
-  lbl.dataset.round = r;
-  lbl.classList.add(`rl-${r}`);
-  lbl.textContent = ROUND_NAMES[r];
-  return lbl;
-}
+function makeLabel(r, mirrored) { const lbl = document.createElement('div'); lbl.className = `round-label rl-${r}`; lbl.textContent = ROUND_NAMES[r]; return lbl; }
 
-/* Build one column containing `count` matches starting at match index `startM`.
-   `mirrored` = true for right-side columns (connectors point left). */
 function buildColumn(r, startM, count, mirrored, isCenter) {
-  const col = document.createElement('div');
-  col.className = 'bracket-col';
-  if (!isCenter) col.id = `col-${r}-${mirrored ? 'right' : 'left'}`;
-
+  const col = document.createElement('div'); col.className = 'bracket-col';
   const sh = slotH(r);
-
   for (let i = 0; i < count; i++) {
-    const m = startM + i;
-    const slot = document.createElement('div');
-    slot.className = 'match-slot';
-    slot.id = `slot-r${r}-m${m}`;
-
+    const m = startM + i, slot = document.createElement('div'); slot.className = 'match-slot'; slot.id = `slot-r${r}-m${m}`;
     if (isCenter) {
-      // Center the Final card at the same height as the Semifinal cards
-      // (where their connector lines actually converge), not the full
-      // bracket height — keeps Final/3rd-place visually near the middle.
-      // The spacer margin goes on the badge (so badge+card move down together);
-      // the card itself stays immediately below its badge.
-      const sh3 = slotH(3);
-      const badge = document.createElement('div');
-      badge.className = 'final-badge';
-      badge.innerHTML = '🏆 FINAL';
-      const badgeH = 25; // approx rendered height incl. margin-bottom
-      badge.style.marginTop = Math.max(0, ((sh3 - CARD_H) / 2) - badgeH) + 'px';
-      col.appendChild(badge);
-    } else {
-      slot.style.height = sh + 'px';
-      if (i < count - 1) slot.style.marginBottom = SLOT_GAP + 'px';
-    }
-
+      const badge = document.createElement('div'); badge.className = 'final-badge'; badge.innerHTML = '🏆 FINAL';
+      badge.style.marginTop = Math.max(0, ((slotH(3) - CARD_H) / 2) - 25) + 'px'; col.appendChild(badge);
+    } else { slot.style.height = sh + 'px'; if (i < count - 1) slot.style.marginBottom = SLOT_GAP + 'px'; }
     slot.appendChild(buildCard(r, m));
-
-    // Connector lines (not on Final column)
     if (r < 4) {
-      const ch = document.createElement('div');
-      ch.className = 'conn-h' + (mirrored ? ' mirror' : '');
-      slot.appendChild(ch);
-
-      // Vertical pairing bar only applies when there are sibling matches
-      // merging into a shared parent (rounds 0-2). The Semifinal (r=3) feeds
-      // straight across into the Final with no pairing, so it gets no vertical bar.
+      const ch = document.createElement('div'); ch.className = 'conn-h' + (mirrored ? ' mirror' : ''); slot.appendChild(ch);
       if (r < 3) {
-        const localIdx = i; // position within this half's column
-        const isEven = localIdx % 2 === 0;
-
-        const cv = document.createElement('div');
-        cv.className = 'conn-v' + (mirrored ? ' mirror' : '');
-        cv.style.cssText = `
-          position:absolute; ${mirrored ? 'left' : 'right'}:calc(-1 * var(--col-gap));
-          width:1px; background:var(--line); z-index:1;
-          ${isEven
-            ? `top:50%; height:${(sh + SLOT_GAP) / 2}px;`
-            : `bottom:50%; height:${(sh + SLOT_GAP) / 2}px;`}
-        `;
+        const cv = document.createElement('div'); cv.className = 'conn-v' + (mirrored ? ' mirror' : '');
+        cv.style.cssText = `position:absolute; ${mirrored ? 'left' : 'right'}:calc(-1 * var(--col-gap)); width:1px; background:var(--line); z-index:1; ${i % 2 === 0 ? `top:50%; height:${(sh + SLOT_GAP) / 2}px;` : `bottom:50%; height:${(sh + SLOT_GAP) / 2}px;`}`;
         slot.appendChild(cv);
       }
     }
-
     col.appendChild(slot);
   }
   return col;
 }
 
-/* Build a single match card */
 function buildCard(r, m) {
-  const match = state[r][m];
-  const card  = document.createElement('div');
-  card.className = 'match-card';
-  if (r === 4) card.classList.add('final-card');
-  card.id = `card-r${r}-m${m}`;
-
+  const match = state[r][m], card = document.createElement('div'); card.className = 'match-card'; if (r === 4) card.classList.add('final-card'); card.id = `card-r${r}-m${m}`;
   card.appendChild(teamBtn(match.t1, 't1', r, m));
   const d = document.createElement('div'); d.className = 'card-divider'; card.appendChild(d);
   card.appendChild(teamBtn(match.t2, 't2', r, m));
   const vs = document.createElement('div'); vs.className = 'vs-pip'; vs.textContent = 'VS'; card.appendChild(vs);
-
-  if (match.winner) styleWinner(card, match.winner, match.t1, match.t2, false);
-  return card;
+  if (match.winner) styleWinner(card, match.winner, match.t1, match.t2, false); return card;
 }
 
-/* Build a team button with real flag image */
 function teamBtn(team, slot, r, m) {
-  const btn = document.createElement('button');
-  btn.className = 'team-btn';
-  btn.dataset.slot = slot; btn.dataset.r = r; btn.dataset.m = m;
-
-  if (!team) {
-    btn.classList.add('tbd'); btn.disabled = true;
-    btn.innerHTML = `
-      <img class="flag-img" src="https://flagcdn.com/w40/xx.png"
-           onerror="this.style.opacity='.3'" alt="" />
-      <span class="tname">TBD</span>`;
-  } else {
-    btn.innerHTML = `
-      <img class="flag-img"
-           src="${flagUrl(team.c,'w40')}"
-           srcset="${flagUrl(team.c,'w40')} 1x, ${flagUrl(team.c,'w80')} 2x"
-           alt="${team.n} flag" loading="lazy"/>
-      <span class="tname">${team.n}</span>
-      <span class="chk">✓</span>`;
-    btn.addEventListener('click', () => onPick(r, m, slot));
-  }
+  const btn = document.createElement('button'); btn.className = 'team-btn'; btn.dataset.slot = slot; btn.dataset.r = r; btn.dataset.m = m;
+  if (!team) { btn.classList.add('tbd'); btn.disabled = true; btn.innerHTML = `<img class="flag-img" src="https://flagcdn.com/w40/xx.png" style="opacity:.3" alt="" /><span class="tname">TBD</span>`; }
+  else { btn.innerHTML = `<img class="flag-img" src="${flagUrl(team.c,'w40')}" alt="" loading="lazy"/><span class="tname">${team.n}</span><span class="chk">✓</span>`; btn.addEventListener('click', () => onPick(r, m, slot)); }
   return btn;
 }
 
-/* Apply winner/loser styling */
 function styleWinner(card, winner, t1, t2, animate) {
   if (!card) return;
   card.querySelectorAll('.team-btn').forEach(btn => {
-    const nm = btn.querySelector('.tname')?.textContent;
-    btn.classList.remove('winner','loser','tbd','flash');
+    const nm = btn.querySelector('.tname')?.textContent; btn.classList.remove('winner','loser','tbd','flash');
     if (!nm) return;
-    if (nm === winner.n) {
-      btn.classList.add('winner');
-      if (animate) { btn.classList.add('flash'); setTimeout(()=>btn.classList.remove('flash'),600); }
-    } else {
-      btn.classList.add('loser');
-    }
+    if (nm === winner.n) { btn.classList.add('winner'); if (animate) { btn.classList.add('flash'); setTimeout(()=>btn.classList.remove('flash'),600); } } else btn.classList.add('loser');
     btn.disabled = false;
   });
 }
 
-/* ═══════════════════════════════════════════════════
-   PICK LOGIC
-   ═══════════════════════════════════════════════════ */
 function onPick(r, m, slot) {
-  const match = state[r][m];
-  if (!match.t1 || !match.t2) return;
+  const match = state[r][m]; if (!match.t1 || !match.t2) return;
   if (match.winner) undoDownstream(r, m);
-
-  const winner = slot === 't1' ? match.t1 : match.t2;
-  const loser  = slot === 't1' ? match.t2 : match.t1;
+  const winner = slot === 't1' ? match.t1 : match.t2, loser = slot === 't1' ? match.t2 : match.t1;
   match.winner = winner; match.loser = loser;
-
   styleWinner(document.getElementById(`card-r${r}-m${m}`), winner, match.t1, match.t2, true);
-
-  // Advance to next round
-  if (r < 4) {
-    const nr = r+1, nm = Math.floor(m/2), ns = m%2===0 ? 't1' : 't2';
-    state[nr][nm][ns] = {...winner};
-    rebuildCard(nr, nm);
-  }
-
-  // Semifinal losers → 3rd place
-  if (r === 3) {
-    sfLosers[m] = {...loser};
-    thirdState = { t1:sfLosers[0], t2:sfLosers[1], winner:null };
-    buildThird();
-  }
-
+  if (r < 4) { const nr = r+1, nm = Math.floor(m/2), ns = m%2===0 ? 't1' : 't2'; state[nr][nm][ns] = {...winner}; rebuildCard(nr, nm); }
+  if (r === 3) { sfLosers[m] = {...loser}; thirdState = { t1:sfLosers[0], t2:sfLosers[1], winner:null }; buildThird(); }
   if (r === 4) showChamp(winner);
-
-  updateProgress();
-  updateRoundLabels();
-  highlightPath(winner.n);
+  updateProgress(); updateRoundLabels(); highlightPath(winner.n);
 }
 
 function undoDownstream(r, m) {
-  const match = state[r][m];
-  if (!match.winner) return;
+  const match = state[r][m]; if (!match.winner) return;
   match.winner = null; match.loser = null;
-
-  if (r < 4) {
-    const nr = r+1, nm = Math.floor(m/2), ns = m%2===0?'t1':'t2';
-    undoDownstream(nr, nm);
-    state[nr][nm][ns] = null;
-    rebuildCard(nr, nm);
-  }
-  if (r === 3) {
-    sfLosers[m] = null;
-    thirdState = { t1:sfLosers[0], t2:sfLosers[1], winner:null };
-    buildThird();
-  }
-  if (r === 4) {
-    document.getElementById('champ-overlay').classList.remove('show');
-    stopConfetti();
-  }
+  if (r < 4) { const nr = r+1, nm = Math.floor(m/2), ns = m%2===0?'t1':'t2'; undoDownstream(nr, nm); state[nr][nm][ns] = null; rebuildCard(nr, nm); }
+  if (r === 3) { sfLosers[m] = null; thirdState = { t1:sfLosers[0], t2:sfLosers[1], winner:null }; buildThird(); }
+  if (r === 4) { document.getElementById('champ-overlay').classList.remove('show'); stopConfetti(); }
   rebuildCard(r, m);
 }
 
 function rebuildCard(r, m) {
-  const slot = document.getElementById(`slot-r${r}-m${m}`);
-  if (!slot) return;
-  const old = document.getElementById(`card-r${r}-m${m}`);
-  if (old) old.remove();
-  slot.insertBefore(buildCard(r, m), slot.firstChild);
+  const slot = document.getElementById(`slot-r${r}-m${m}`), old = document.getElementById(`card-r${r}-m${m}`);
+  if (!slot) return; if (old) old.remove(); slot.insertBefore(buildCard(r, m), slot.firstChild);
 }
 
-/* ═══════════════════════════════════════════════════
-   THIRD PLACE
-   ═══════════════════════════════════════════════════ */
 function buildThird() {
-  thirdCardWrap.innerHTML = '';
-  const card = document.createElement('div');
-  card.className = 'match-card'; card.id = 'card-third';
-
+  thirdCardWrap.innerHTML = ''; const card = document.createElement('div'); card.className = 'match-card'; card.id = 'card-third';
   card.appendChild(thirdBtn(thirdState.t1, 't1'));
   const d = document.createElement('div'); d.className = 'card-divider'; card.appendChild(d);
   card.appendChild(thirdBtn(thirdState.t2, 't2'));
   const vs = document.createElement('div'); vs.className = 'vs-pip'; vs.textContent = 'VS'; card.appendChild(vs);
-
-  if (thirdState.winner) styleWinner(card, thirdState.winner, thirdState.t1, thirdState.t2, false);
-  thirdCardWrap.appendChild(card);
+  if (thirdState.winner) styleWinner(card, thirdState.winner, thirdState.t1, thirdState.t2, false); thirdCardWrap.appendChild(card);
 }
 
 function thirdBtn(team, slot) {
-  const btn = document.createElement('button');
-  btn.className = 'team-btn';
-  if (!team) {
-    btn.classList.add('tbd'); btn.disabled = true;
-    btn.innerHTML = `<img class="flag-img" src="" alt="" style="opacity:.3"/><span class="tname">TBD</span>`;
-  } else {
-    btn.innerHTML = `
-      <img class="flag-img"
-           src="${flagUrl(team.c,'w40')}"
-           srcset="${flagUrl(team.c,'w40')} 1x, ${flagUrl(team.c,'w80')} 2x"
-           alt="${team.n} flag" loading="lazy"/>
-      <span class="tname">${team.n}</span>
-      <span class="chk">✓</span>`;
-    btn.addEventListener('click', () => {
-      if (!thirdState.t1 || !thirdState.t2) return;
-      thirdState.winner = slot === 't1' ? thirdState.t1 : thirdState.t2;
-      buildThird(); updateProgress();
-    });
-  }
+  const btn = document.createElement('button'); btn.className = 'team-btn';
+  if (!team) { btn.classList.add('tbd'); btn.disabled = true; btn.innerHTML = `<img class="flag-img" src="" alt="" style="opacity:.3"/><span class="tname">TBD</span>`; }
+  else { btn.innerHTML = `<img class="flag-img" src="${flagUrl(team.c,'w40')}" alt="" loading="lazy"/><span class="tname">${team.n}</span><span class="chk">✓</span>`; btn.addEventListener('click', () => { if (!thirdState.t1 || !thirdState.t2) return; thirdState.winner = slot === 't1' ? thirdState.t1 : thirdState.t2; buildThird(); updateProgress(); }); }
   return btn;
 }
 
-/* ═══════════════════════════════════════════════════
-   CHAMPION
-   ═══════════════════════════════════════════════════ */
 function showChamp(team) {
-  document.getElementById('champ-flag-img').src     = flagUrl(team.c, 'w160');
-  document.getElementById('champ-flag-img').alt     = team.n + ' flag';
-  document.getElementById('champ-name').textContent = team.n;
-  document.getElementById('champ-overlay').classList.add('show');
-  launchConfetti();
+  document.getElementById('champ-flag-img').src = flagUrl(team.c, 'w160'); document.getElementById('champ-name').textContent = team.n;
+  document.getElementById('champ-overlay').classList.add('show'); launchConfetti();
 }
-document.getElementById('btn-close-champ').addEventListener('click', () => {
-  document.getElementById('champ-overlay').classList.remove('show');
-  stopConfetti();
-});
+document.getElementById('btn-close-champ').addEventListener('click', () => { document.getElementById('champ-overlay').classList.remove('show'); stopConfetti(); });
 
-/* ═══════════════════════════════════════════════════
-   CONFETTI
-   ═══════════════════════════════════════════════════ */
-const cCanvas = document.getElementById('confetti-canvas');
-const cCtx    = cCanvas.getContext('2d');
-let pieces = [], animId = null;
-const COLORS = ['#f59e0b','#3b82f6','#22c55e','#ef4444','#a855f7','#ec4899','#06b6d4'];
+const cCanvas = document.getElementById('confetti-canvas'), cCtx = cCanvas.getContext('2d'); let pieces = [], animId = null; const COLORS = ['#f59e0b','#3b82f6','#22c55e','#ef4444','#a855f7','#ec4899','#06b6d4'];
+function launchConfetti() { cCanvas.style.display = 'block'; cCanvas.width = window.innerWidth; cCanvas.height = window.innerHeight; pieces = Array.from({length:160}, () => ({ x: Math.random()*cCanvas.width, y: Math.random()*-cCanvas.height, w: 7+Math.random()*9, h: 5+Math.random()*7, c: COLORS[Math.floor(Math.random()*COLORS.length)], spd: 2.5+Math.random()*4, ang: Math.random()*Math.PI*2, spin: (Math.random()-.5)*.2, dr: (Math.random()-.5)*1.8 })); if (animId) cancelAnimationFrame(animId); tickConfetti(); }
+function tickConfetti() { cCtx.clearRect(0,0,cCanvas.width,cCanvas.height); let alive = false; pieces.forEach(p => { p.y+=p.spd; p.x+=p.dr; p.ang+=p.spin; if (p.y < cCanvas.height+20) alive=true; cCtx.save(); cCtx.translate(p.x,p.y); cCtx.rotate(p.ang); cCtx.fillStyle=p.c; cCtx.globalAlpha=.86; cCtx.fillRect(-p.w/2,-p.h/2,p.w,p.h); cCtx.restore(); }); if (alive) animId=requestAnimationFrame(tickConfetti); else stopConfetti(); }
+function stopConfetti() { if (animId){cancelAnimationFrame(animId);animId=null;} cCanvas.style.display='none'; cCtx.clearRect(0,0,cCanvas.width,cCanvas.height); }
 
-function launchConfetti() {
-  cCanvas.style.display = 'block';
-  cCanvas.width = window.innerWidth; cCanvas.height = window.innerHeight;
-  pieces = Array.from({length:160}, () => ({
-    x: Math.random()*cCanvas.width, y: Math.random()*-cCanvas.height,
-    w: 7+Math.random()*9, h: 5+Math.random()*7,
-    c: COLORS[Math.floor(Math.random()*COLORS.length)],
-    spd: 2.5+Math.random()*4, ang: Math.random()*Math.PI*2,
-    spin: (Math.random()-.5)*.2, dr: (Math.random()-.5)*1.8,
-  }));
-  if (animId) cancelAnimationFrame(animId);
-  tickConfetti();
-}
-function tickConfetti() {
-  cCtx.clearRect(0,0,cCanvas.width,cCanvas.height);
-  let alive = false;
-  pieces.forEach(p => {
-    p.y+=p.spd; p.x+=p.dr; p.ang+=p.spin;
-    if (p.y < cCanvas.height+20) alive=true;
-    cCtx.save(); cCtx.translate(p.x,p.y); cCtx.rotate(p.ang);
-    cCtx.fillStyle=p.c; cCtx.globalAlpha=.86;
-    cCtx.fillRect(-p.w/2,-p.h/2,p.w,p.h);
-    cCtx.restore();
-  });
-  if (alive) animId=requestAnimationFrame(tickConfetti); else stopConfetti();
-}
-function stopConfetti() {
-  if (animId){cancelAnimationFrame(animId);animId=null;}
-  cCanvas.style.display='none';
-  cCtx.clearRect(0,0,cCanvas.width,cCanvas.height);
-}
+function updateProgress() { let done = 0; for (let r=0;r<5;r++) for (let m=0;m<ROUND_SIZES[r];m++) if (state[r][m]?.winner) done++; if (thirdState.winner) done++; document.getElementById('prog-n').textContent = done; }
+function updateRoundLabels() { for (let r=0;r<5;r++) { const done = state[r].every(m=>m.winner); document.querySelectorAll(`.rl-${r}`).forEach(el => el.classList.toggle('done', done)); } }
+function highlightPath(name) { document.querySelectorAll('.match-card').forEach(c=>c.classList.remove('path-hl')); if (!name) return; for (let r=0;r<5;r++) for (let m=0;m<ROUND_SIZES[r];m++) { const mt=state[r][m]; if ((mt.t1&&mt.t1.n===name)||(mt.t2&&mt.t2.n===name)) document.getElementById(`card-r${r}-m${m}`)?.classList.add('path-hl'); } }
 
-/* ═══════════════════════════════════════════════════
-   PROGRESS
-   ═══════════════════════════════════════════════════ */
-function updateProgress() {
-  let done = 0;
-  for (let r=0;r<5;r++) for (let m=0;m<ROUND_SIZES[r];m++) if (state[r][m]?.winner) done++;
-  if (thirdState.winner) done++;
-  document.getElementById('prog-n').textContent = done;
-}
+document.getElementById('search-input').addEventListener('input', function(){ const q = this.value.trim().toLowerCase(); document.querySelectorAll('.match-card').forEach(c=>c.classList.remove('search-hl')); if (!q) return; document.querySelectorAll('.team-btn:not(.tbd) .tname').forEach(span => { if (span.textContent.toLowerCase().includes(q)) span.closest('.match-card')?.classList.add('search-hl'); }); });
+document.getElementById('btn-reset').addEventListener('click', () => { stopConfetti(); document.getElementById('champ-overlay').classList.remove('show'); document.getElementById('search-input').value = ''; initState(); build(); });
 
-/* ═══════════════════════════════════════════════════
-   ROUND LABEL DONE STATE
-   ═══════════════════════════════════════════════════ */
-function updateRoundLabels() {
-  for (let r=0;r<5;r++) {
-    const done = state[r].every(m=>m.winner);
-    document.querySelectorAll(`.rl-${r}`).forEach(el => el.classList.toggle('done', done));
-  }
-}
+function snapshotState() { return { state: JSON.parse(JSON.stringify(state)), sfLosers: JSON.parse(JSON.stringify(sfLosers)), thirdState: JSON.parse(JSON.stringify(thirdState)) }; }
+function champFromSnapshot(snap) { const final = snap.state?.[4]?.[0]; return final?.winner?.n || null; }
+function countPicks(snap) { let done = 0; for (let r = 0; r < 5; r++) for (let m = 0; m < ROUND_SIZES[r]; m++) if (snap.state[r][m]?.winner) done++; if (snap.thirdState?.winner) done++; return done; }
 
-/* ═══════════════════════════════════════════════════
-   PATH HIGHLIGHT
-   ═══════════════════════════════════════════════════ */
-function highlightPath(name) {
-  document.querySelectorAll('.match-card').forEach(c=>c.classList.remove('path-hl'));
-  if (!name) return;
-  for (let r=0;r<5;r++) {
-    for (let m=0;m<ROUND_SIZES[r];m++) {
-      const mt=state[r][m];
-      if ((mt.t1&&mt.t1.n===name)||(mt.t2&&mt.t2.n===name))
-        document.getElementById(`card-r${r}-m${m}`)?.classList.add('path-hl');
-    }
-  }
-}
-
-/* ═══════════════════════════════════════════════════
-   SEARCH
-   ═══════════════════════════════════════════════════ */
-document.getElementById('search-input').addEventListener('input', function(){
-  const q = this.value.trim().toLowerCase();
-  document.querySelectorAll('.match-card').forEach(c=>c.classList.remove('search-hl'));
-  if (!q) return;
-  document.querySelectorAll('.team-btn:not(.tbd) .tname').forEach(span => {
-    if (span.textContent.toLowerCase().includes(q))
-      span.closest('.match-card')?.classList.add('search-hl');
-  });
-});
-
-/* ═══════════════════════════════════════════════════
-   RESET
-   ═══════════════════════════════════════════════════ */
-document.getElementById('btn-reset').addEventListener('click', () => {
-  stopConfetti();
-  document.getElementById('champ-overlay').classList.remove('show');
-  document.getElementById('search-input').value = '';
-  initState(); build();
-});
-
-/* ═══════════════════════════════════════════════════
-   SAVE / LOAD PREDICTIONS  (persisted in localStorage)
-   ═══════════════════════════════════════════════════ */
-const STORAGE_KEY = 'wc2026-bracket-predictions';
-
-function loadAllPredictions() {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    return raw ? JSON.parse(raw) : [];
-  } catch (e) {
-    console.error('Could not read saved predictions:', e);
-    return [];
-  }
-}
-
-function saveAllPredictions(list) {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
-    return true;
-  } catch (e) {
-    console.error('Could not write saved predictions:', e);
-    return false;
-  }
-}
-
-function snapshotState() {
-  // Deep-clone current bracket state, sf losers, and 3rd place state
-  return {
-    state: JSON.parse(JSON.stringify(state)),
-    sfLosers: JSON.parse(JSON.stringify(sfLosers)),
-    thirdState: JSON.parse(JSON.stringify(thirdState)),
-  };
-}
-
-function champFromSnapshot(snap) {
-  const final = snap.state?.[4]?.[0];
-  return final?.winner?.n || null;
-}
-
-/* ── Save modal ── */
-const saveModal   = document.getElementById('save-modal');
-const nameInput   = document.getElementById('predictor-name');
-const saveNote    = document.getElementById('save-note');
-
-document.getElementById('btn-save').addEventListener('click', () => {
-  saveNote.textContent = ''; saveNote.className = 'modal-note';
-  nameInput.value = '';
-  saveModal.classList.add('show');
-  setTimeout(() => nameInput.focus(), 50);
-});
+const saveModal = document.getElementById('save-modal'), nameInput = document.getElementById('predictor-name'), saveNote = document.getElementById('save-note');
+document.getElementById('btn-save').addEventListener('click', () => { saveNote.textContent = ''; saveNote.className = 'modal-note'; nameInput.value = ''; saveModal.classList.add('show'); setTimeout(() => nameInput.focus(), 50); });
 document.getElementById('save-cancel').addEventListener('click', () => saveModal.classList.remove('show'));
 saveModal.addEventListener('click', (e) => { if (e.target === saveModal) saveModal.classList.remove('show'); });
 nameInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') document.getElementById('save-confirm').click(); });
 
+/* ── SUPABASE SUBMISSION LOGIC ── */
 document.getElementById('save-confirm').addEventListener('click', async () => {
-  const name = document.getElementById('predictor-name').value.trim();
-  const saveNote = document.getElementById('save-note');
-  const saveModal = document.getElementById('save-modal');
-  
-  if (!name) {
-    saveNote.textContent = 'Please enter a name.';
-    saveNote.className = 'modal-note error';
-    document.getElementById('predictor-name').focus();
-    return;
-  }
+  const name = nameInput.value.trim();
+  if (!name) { saveNote.textContent = 'Please enter a name.'; saveNote.className = 'modal-note error'; nameInput.focus(); return; }
 
   const snap = snapshotState();
   const payload = {
@@ -940,8 +461,8 @@ document.getElementById('save-confirm').addEventListener('click', async () => {
     bracket_data: snap
   };
 
-  const SUPABASE_URL = https://mnwqtpjkuvrydbrsfdsk.supabase.co;
-  const SUPABASE_ANON_KEY = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1ud3F0cGprdXZyeWRicnNmZHNrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI3MzU2NDgsImV4cCI6MjA5ODMxMTY0OH0.ejH-mFDfDKHWHoRhK6x_Ujvvg6jXdaB6zRGEf2poyWo;
+  const SUPABASE_URL = "https://mnwqtpjkuvrydbrsfdsk.supabase.co";
+  const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1ud3F0cGprdXZyeWRicnNmZHNrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI3MzU2NDgsImV4cCI6MjA5ODMxMTY0OH0.ejH-mFDfDKHWHoRhK6x_Ujvvg6jXdaB6zRGEf2poyWo";
 
   try {
     const response = await fetch(`${SUPABASE_URL}/rest/v1/predictions`, {
@@ -955,126 +476,19 @@ document.getElementById('save-confirm').addEventListener('click', async () => {
     });
 
     if (response.ok) {
-      saveNote.textContent = `Saved!`;
+      saveNote.textContent = `Saved! Your prediction is locked into the database.`;
       saveNote.className = 'modal-note success';
-      setTimeout(() => saveModal.classList.remove('show'), 900);
+      setTimeout(() => saveModal.classList.remove('show'), 1000);
+    } else {
+      throw new Error("Failed to save");
     }
   } catch (e) {
-    saveNote.textContent = 'Error saving.';
-    saveNote.className = 'modal-note error';
-  }
-});
-
-  const list = loadAllPredictions();
-  const snap = snapshotState();
-  const entry = {
-    id: 'pred_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7),
-    name,
-    savedAt: new Date().toISOString(),
-    picksMade: countPicks(snap),
-    champion: champFromSnapshot(snap),
-    data: snap,
-  };
-  list.push(entry);
-
-  if (saveAllPredictions(list)) {
-    saveNote.textContent = `Saved! ${name}'s prediction is stored on this device.`;
-    saveNote.className = 'modal-note success';
-    setTimeout(() => saveModal.classList.remove('show'), 900);
-  } else {
     saveNote.textContent = 'Something went wrong saving — please try again.';
     saveNote.className = 'modal-note error';
   }
 });
 
-function countPicks(snap) {
-  let done = 0;
-  for (let r = 0; r < 5; r++) for (let m = 0; m < ROUND_SIZES[r]; m++) if (snap.state[r][m]?.winner) done++;
-  if (snap.thirdState?.winner) done++;
-  return done;
-}
-
-/* ── Saved list modal ── */
-const listModal = document.getElementById('list-modal');
-const savedListEl = document.getElementById('saved-list');
-
-function renderSavedList() {
-  const list = loadAllPredictions().sort((a, b) => new Date(b.savedAt) - new Date(a.savedAt));
-  savedListEl.innerHTML = '';
-
-  if (list.length === 0) {
-    savedListEl.innerHTML = '<div class="saved-empty">No saved predictions yet. Make some picks and hit "Save Prediction"!</div>';
-    return;
-  }
-
-  list.forEach(entry => {
-    const row = document.createElement('div');
-    row.className = 'saved-item';
-
-    const dt = new Date(entry.savedAt);
-    const dateStr = dt.toLocaleDateString(undefined, { month:'short', day:'numeric' }) + ' · ' +
-                    dt.toLocaleTimeString(undefined, { hour:'numeric', minute:'2-digit' });
-    const champStr = entry.champion ? `🏆 ${entry.champion}` : `${entry.picksMade}/31 picks`;
-
-    row.innerHTML = `
-      <div>
-        <div class="si-name">${escapeHtml(entry.name)}</div>
-        <div class="si-meta">${dateStr} · ${escapeHtml(champStr)}</div>
-      </div>
-      <div class="saved-item-actions">
-        <button class="si-btn load" data-id="${entry.id}">Load</button>
-        <button class="si-btn del"  data-id="${entry.id}">Delete</button>
-      </div>`;
-    savedListEl.appendChild(row);
-  });
-
-  savedListEl.querySelectorAll('.si-btn.load').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const entry = loadAllPredictions().find(e => e.id === btn.dataset.id);
-      if (entry) applySnapshot(entry.data);
-      listModal.classList.remove('show');
-    });
-  });
-  savedListEl.querySelectorAll('.si-btn.del').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const remaining = loadAllPredictions().filter(e => e.id !== btn.dataset.id);
-      saveAllPredictions(remaining);
-      renderSavedList();
-    });
-  });
-}
-
-function escapeHtml(str) {
-  const d = document.createElement('div');
-  d.textContent = str;
-  return d.innerHTML;
-}
-
-function applySnapshot(snap) {
-  state      = JSON.parse(JSON.stringify(snap.state));
-  sfLosers   = JSON.parse(JSON.stringify(snap.sfLosers));
-  thirdState = JSON.parse(JSON.stringify(snap.thirdState));
-
-  stopConfetti();
-  document.getElementById('champ-overlay').classList.remove('show');
-  build();
-
-  const champ = champFromSnapshot(snap);
-  if (champ) showChamp(state[4][0].winner);
-}
-
-document.getElementById('btn-saved-list').addEventListener('click', () => {
-  renderSavedList();
-  listModal.classList.add('show');
-});
-document.getElementById('list-close').addEventListener('click', () => listModal.classList.remove('show'));
-listModal.addEventListener('click', (e) => { if (e.target === listModal) listModal.classList.remove('show'); });
-
-/* ═══════════════════════════════════════════════════
-   INIT
-   ═══════════════════════════════════════════════════ */
-initState();
-build();
+initState(); build();
 </script>
 </body>
 </html>
