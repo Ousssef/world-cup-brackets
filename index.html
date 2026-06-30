@@ -303,6 +303,23 @@ function initState() {
     return { t1:null, t2:null, winner:null, loser:null };
   }));
   sfLosers = [null, null]; thirdState = { t1:null, t2:null, winner:null };
+
+  // Pre-set Round of 32 results (already played)
+  const r32Results = [
+    { m: 0,  winner: 't2' }, // Canada beats South Africa
+    { m: 1,  winner: 't2' }, // Morocco beats Netherlands
+    { m: 2,  winner: 't2' }, // Paraguay beats Germany
+    { m: 8,  winner: 't1' }, // Brazil beats Japan
+  ];
+  r32Results.forEach(({ m, winner }) => {
+    const match = state[0][m];
+    const w = winner === 't1' ? match.t1 : match.t2;
+    const l = winner === 't1' ? match.t2 : match.t1;
+    match.winner = w; match.loser = l;
+    // Advance winner to Round of 16
+    const nm = Math.floor(m / 2), ns = m % 2 === 0 ? 't1' : 't2';
+    state[1][nm][ns] = {...w};
+  });
 }
 
 const bracketWrap = document.getElementById('bracket-wrap'), roundLabels = document.getElementById('round-labels');
