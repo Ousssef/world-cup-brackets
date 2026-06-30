@@ -127,6 +127,15 @@
   .match-card.path-hl       { border-color: var(--gold)   !important; box-shadow: 0 0 0 2px rgba(245,158,11,.22); }
   .match-card.search-hl     { border-color: var(--accent) !important; box-shadow: 0 0 0 2px rgba(59,130,246,.25); }
 
+  /* ── LOCKED (already played) ── */
+  .match-card.locked-card { border-color: #1e3a2a; cursor: default; }
+  .match-card.locked-card::after {
+    content: '🔒'; position: absolute; right: 7px; top: 5px;
+    font-size: 0.6rem; opacity: 0.45; pointer-events: none; z-index: 4;
+  }
+  .team-btn.locked-btn { cursor: default; }
+  .team-btn.locked-btn:hover { background: transparent !important; }
+
   /* ── FINAL CARD — distinct gold treatment ── */
   .match-card.final-card {
     border: 1.5px solid var(--gold);
@@ -304,7 +313,7 @@ function initState() {
   }));
   sfLosers = [null, null]; thirdState = { t1:null, t2:null, winner:null };
 
-  // Pre-set Round of 32 results (already played)
+  // Pre-set Round of 32 results (already played — locked)
   const r32Results = [
     { m: 0,  winner: 't2' }, // Canada beats South Africa
     { m: 1,  winner: 't2' }, // Morocco beats Netherlands
@@ -316,6 +325,7 @@ function initState() {
     const w = winner === 't1' ? match.t1 : match.t2;
     const l = winner === 't1' ? match.t2 : match.t1;
     match.winner = w; match.loser = l;
+    match.locked = true; // cannot be changed
     // Advance winner to Round of 16
     const nm = Math.floor(m / 2), ns = m % 2 === 0 ? 't1' : 't2';
     state[1][nm][ns] = {...w};
@@ -370,7 +380,7 @@ function buildColumn(r, startM, count, mirrored, isCenter) {
 }
 
 function buildCard(r, m) {
-  const match = state[r][m], card = document.createElement('div'); card.className = 'match-card'; if (r === 4) card.classList.add('final-card'); card.id = `card-r${r}-m${m}`;
+  const match = state[r][m], card = document.createElement('div'); card.className = 'match-card'; if (r === 4) card.classList.add('final-card'); if (match.locked) card.classList.add('locked-card'); card.id = `card-r${r}-m${m}`;
   card.appendChild(teamBtn(match.t1, 't1', r, m));
   const d = document.createElement('div'); d.className = 'card-divider'; card.appendChild(d);
   card.appendChild(teamBtn(match.t2, 't2', r, m));
@@ -380,8 +390,13 @@ function buildCard(r, m) {
 
 function teamBtn(team, slot, r, m) {
   const btn = document.createElement('button'); btn.className = 'team-btn'; btn.dataset.slot = slot; btn.dataset.r = r; btn.dataset.m = m;
+  const match = state[r][m];
   if (!team) { btn.classList.add('tbd'); btn.disabled = true; btn.innerHTML = `<img class="flag-img" src="https://flagcdn.com/w40/xx.png" style="opacity:.3" alt="" /><span class="tname">TBD</span>`; }
-  else { btn.innerHTML = `<img class="flag-img" src="${flagUrl(team.c,'w40')}" alt="" loading="lazy"/><span class="tname">${team.n}</span><span class="chk">✓</span>`; btn.addEventListener('click', () => onPick(r, m, slot)); }
+  else {
+    btn.innerHTML = `<img class="flag-img" src="${flagUrl(team.c,'w40')}" alt="" loading="lazy"/><span class="tname">${team.n}</span><span class="chk">✓</span>`;
+    if (match && match.locked) { btn.disabled = true; btn.classList.add('locked-btn'); }
+    else { btn.addEventListener('click', () => onPick(r, m, slot)); }
+  }
   return btn;
 }
 
@@ -397,6 +412,7 @@ function styleWinner(card, winner, t1, t2, animate) {
 
 function onPick(r, m, slot) {
   const match = state[r][m]; if (!match.t1 || !match.t2) return;
+  if (match.locked) return; // already played — cannot change
   if (match.winner) undoDownstream(r, m);
   const winner = slot === 't1' ? match.t1 : match.t2, loser = slot === 't1' ? match.t2 : match.t1;
   match.winner = winner; match.loser = loser;
