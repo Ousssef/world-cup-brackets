@@ -225,6 +225,117 @@
   .modal-note { font-size: 0.75rem; color: var(--muted); margin-top: 12px; line-height: 1.5; }
   .modal-note.error { color: #ef4444; }
   .modal-note.success { color: var(--winner); }
+
+  /* ── HOW TO PLAY MODAL ── */
+  #help-modal .modal-card { max-width: 480px; }
+  .help-section { margin-bottom: 18px; }
+  .help-section:last-child { margin-bottom: 0; }
+  .help-title { font-size: 0.7rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+  .help-steps { display: flex; flex-direction: column; gap: 9px; }
+  .help-step { display: flex; align-items: flex-start; gap: 11px; font-size: 0.84rem; line-height: 1.5; color: var(--text); }
+  .help-step-icon { font-size: 1.15rem; flex-shrink: 0; margin-top: 1px; }
+  .help-legend { display: flex; flex-direction: column; gap: 7px; }
+  .legend-row { display: flex; align-items: center; gap: 10px; font-size: 0.82rem; }
+  .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .legend-dot.green  { background: var(--winner); }
+  .legend-dot.strike { background: var(--loser); }
+  .legend-dot.gold   { background: var(--gold); }
+  .legend-dot.locked { background: #3a5a4a; border: 1px solid #22c55e44; }
+
+  /* ── SHARE MODAL ── */
+  #share-modal .modal-card { max-width: 560px; max-height: 90vh; overflow-y: auto; }
+  .share-preview-wrap {
+    background: #060d1a; border: 1px solid var(--border); border-radius: 10px;
+    padding: 12px; margin-bottom: 16px; overflow: hidden;
+  }
+  /* The off-screen canvas-target bracket card */
+  #share-bracket-card {
+    position: fixed; left: -9999px; top: 0; z-index: -1;
+    width: 900px;
+    background: linear-gradient(160deg,#0a1628 0%,#0f1e38 100%);
+    padding: 28px 28px 22px;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+  }
+  /* In-modal preview (scaled down) */
+  #share-preview-card {
+    background: linear-gradient(160deg,#0a1628 0%,#0f1e38 100%);
+    border-radius: 10px; padding: 16px; width: 100%;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+  }
+  .sbc-header {
+    display:flex; align-items:center; justify-content:space-between; margin-bottom:14px;
+    padding-bottom:12px; border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .sbc-logo { font-size:0.9rem; font-weight:900; color:#e8f0ff; display:flex; align-items:center; gap:8px; }
+  .sbc-badge { background:linear-gradient(135deg,#1a56db,#0ea5e9); border-radius:5px; padding:3px 8px; font-size:0.65rem; font-weight:800; letter-spacing:1px; color:#fff; }
+  .sbc-meta { font-size:0.65rem; color:#7a90b0; }
+  .sbc-meta b { color:#3b82f6; }
+  .sbc-champ {
+    display:flex; align-items:center; gap:14px;
+    background:rgba(245,158,11,.1); border:1px solid rgba(245,158,11,.35);
+    border-radius:10px; padding:12px 16px; margin-bottom:16px;
+  }
+  .sbc-champ-flag { width:52px; height:35px; border-radius:5px; object-fit:cover; border:1px solid rgba(255,255,255,.15); flex-shrink:0; }
+  .sbc-champ-label { font-size:0.6rem; font-weight:800; letter-spacing:1.4px; text-transform:uppercase; color:#f59e0b; margin-bottom:3px; }
+  .sbc-champ-name  { font-size:1.2rem; font-weight:900; color:#e8f0ff; }
+  .sbc-no-champ { font-size:0.82rem; color:#7a90b0; text-align:center; padding:12px; font-style:italic; }
+  .sbc-rounds { display:flex; flex-direction:column; gap:10px; margin-bottom:14px; }
+  .sbc-round-row { display:flex; flex-direction:column; gap:5px; }
+  .sbc-round-label { font-size:0.58rem; font-weight:800; letter-spacing:1.3px; text-transform:uppercase; color:#3b82f6; margin-bottom:3px; }
+  .sbc-teams-row { display:flex; flex-wrap:wrap; gap:5px; }
+  .sbc-team-pill {
+    display:flex; align-items:center; gap:5px;
+    background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.08);
+    border-radius:6px; padding:4px 8px;
+  }
+  .sbc-team-pill.winner-pill { background:rgba(34,197,94,.12); border-color:rgba(34,197,94,.25); }
+  .sbc-pill-flag { width:18px; height:12px; border-radius:2px; object-fit:cover; }
+  .sbc-pill-name { font-size:0.68rem; font-weight:600; color:#e8f0ff; white-space:nowrap; }
+  .sbc-footer {
+    font-size:0.58rem; color:#3a4a60; text-align:center;
+    border-top:1px solid rgba(255,255,255,.05); padding-top:10px; margin-top:4px;
+  }
+
+  /* social share buttons */
+  .share-section-label { font-size:0.68rem; font-weight:800; letter-spacing:1.2px; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }
+  .share-btns { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; }
+  .share-btn {
+    flex:1; min-width:100px; display:flex; align-items:center; justify-content:center; gap:6px;
+    padding:9px 12px; border-radius:9px; font-size:0.78rem; font-weight:700;
+    cursor:pointer; border:none; transition:opacity .18s, transform .12s; white-space:nowrap;
+  }
+  .share-btn:hover { opacity:.85; transform:translateY(-1px); }
+  .share-btn:active { transform:translateY(0); }
+  .share-btn.download  { background:#3b82f6; color:#fff; }
+  .share-btn.twitter   { background:#000; color:#fff; }
+  .share-btn.facebook  { background:#1877f2; color:#fff; }
+  .share-btn.instagram { background:linear-gradient(135deg,#f58529,#dd2a7b,#8134af,#515bd4); color:#fff; }
+  .share-btn.whatsapp  { background:#25d366; color:#fff; }
+  .share-btn.telegram  { background:#229ed9; color:#fff; }
+  .share-btn.reddit    { background:#ff4500; color:#fff; }
+  .share-btn.copy-link { background:var(--surface2); color:var(--text); border:1px solid var(--border); }
+  .share-img-note { font-size:0.71rem; color:var(--muted); background:rgba(59,130,246,.08); border:1px solid rgba(59,130,246,.2); border-radius:7px; padding:8px 12px; margin-bottom:14px; line-height:1.5; }
+  #share-generating { font-size:0.78rem; color:var(--muted); text-align:center; padding:8px 0; }
+
+  /* help modal "don't show again" */
+  .help-dont-show { display:flex; align-items:center; gap:8px; margin-top:16px; padding-top:14px; border-top:1px solid var(--border); }
+  .help-dont-show input[type=checkbox] { width:16px; height:16px; accent-color:var(--accent); cursor:pointer; flex-shrink:0; }
+  .help-dont-show label { font-size:0.78rem; color:var(--muted); cursor:pointer; }
+  #btn-help {
+    background:transparent; border:1px solid var(--border);
+    border-radius:8px; color:var(--muted);
+    padding:7px 13px; font-size:0.83rem; cursor:pointer;
+    transition:all .2s; white-space:nowrap;
+  }
+  #btn-help:hover { border-color:var(--accent); color:var(--accent); }
+  #btn-share {
+    background:linear-gradient(135deg,#7c3aed,#a855f7);
+    border:none; border-radius:8px; color:#fff; font-weight:700;
+    padding:7px 14px; font-size:0.83rem; cursor:pointer;
+    transition:all .2s; white-space:nowrap;
+  }
+  #btn-share:hover { opacity:.88; }
+
 </style>
 </head>
 <body>
@@ -237,6 +348,8 @@
   <div class="progress-pill" id="prog-pill"><b id="prog-n">0</b> / 31 matches done</div>
   <div class="header-right">
     <input type="text" id="search-input" placeholder="🔍 Search team…" autocomplete="off"/>
+    <button id="btn-help">❓ How to Play</button>
+    <button id="btn-share">📤 Share</button>
     <button id="btn-save">💾 Save Prediction</button>
     <button id="btn-reset">🔄 Reset</button>
   </div>
@@ -272,6 +385,69 @@
     <div class="modal-note" id="save-note"></div>
   </div>
 </div>
+
+<!-- HOW TO PLAY MODAL -->
+<div class="modal-overlay" id="help-modal">
+  <div class="modal-card">
+    <div class="modal-title">⚽ World Cup 2026 Bracket</div>
+    <div class="modal-sub">Pick winners match by match — all the way to the champion.</div>
+
+    <div class="help-steps">
+      <div class="help-step"><span class="help-step-icon">👆</span><span>Click a team to advance them to the next round.</span></div>
+      <div class="help-step"><span class="help-step-icon">🔁</span><span>Click again to change your pick — later rounds update automatically.</span></div>
+      <div class="help-step"><span class="help-step-icon">🔒</span><span>Greyed-out matches are already played and locked.</span></div>
+      <div class="help-step"><span class="help-step-icon">📤</span><span>Use <b>Share</b> to download your bracket image or post it on social media.</span></div>
+    </div>
+
+    <div class="modal-actions" style="margin-top:20px;">
+      <button class="modal-btn primary" id="help-close">Let's go! ⚽</button>
+    </div>
+    <div class="help-dont-show">
+      <input type="checkbox" id="help-no-show" />
+      <label for="help-no-show">Don't show this again</label>
+    </div>
+  </div>
+</div>
+
+<!-- SHARE MODAL -->
+<div class="modal-overlay" id="share-modal">
+  <div class="modal-card">
+    <div class="modal-title">📤 Share Your Predictions</div>
+    <div class="modal-sub">Download your full bracket image, then share it anywhere!</div>
+
+    <div class="share-preview-wrap">
+      <div id="share-preview-card"><!-- built by JS --></div>
+    </div>
+
+    <div class="share-img-note">
+      💡 <b>Tip:</b> Hit <b>Download Image</b> to save your full bracket as a PNG, then upload it to Instagram, Facebook, or anywhere that accepts images. For X, WhatsApp & others, the text summary opens directly.
+    </div>
+
+    <div class="share-section-label">📥 Save Image</div>
+    <div class="share-btns">
+      <button class="share-btn download" id="share-download">⬇️ Download Full Bracket</button>
+    </div>
+
+    <div class="share-section-label">📲 Share via App</div>
+    <div class="share-btns">
+      <button class="share-btn twitter"   id="share-twitter">𝕏 X / Twitter</button>
+      <button class="share-btn facebook"  id="share-facebook">f Facebook</button>
+      <button class="share-btn whatsapp"  id="share-whatsapp">💬 WhatsApp</button>
+      <button class="share-btn telegram"  id="share-telegram">✈️ Telegram</button>
+      <button class="share-btn reddit"    id="share-reddit">🟠 Reddit</button>
+      <button class="share-btn instagram" id="share-instagram">📸 Instagram</button>
+      <button class="share-btn copy-link" id="share-copy">🔗 Copy Text</button>
+    </div>
+
+    <div id="share-generating" style="display:none;">⏳ Generating image…</div>
+    <div class="modal-actions" style="margin-top:6px;">
+      <button class="modal-btn ghost" id="share-close">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- OFF-SCREEN BRACKET CARD for html2canvas -->
+<div id="share-bracket-card"></div>
 
 <canvas id="confetti-canvas"></canvas>
 
@@ -521,7 +697,280 @@ document.getElementById('save-confirm').addEventListener('click', async () => {
   }
 });
 
+// ── HOW TO PLAY — auto-show + don't show again ──
+const HELP_KEY = 'wc2026_help_seen';
+function openHelp() { document.getElementById('help-modal').classList.add('show'); }
+function closeHelp() {
+  if (document.getElementById('help-no-show').checked) localStorage.setItem(HELP_KEY,'1');
+  document.getElementById('help-modal').classList.remove('show');
+}
+document.getElementById('btn-help').addEventListener('click', openHelp);
+document.getElementById('help-close').addEventListener('click', closeHelp);
+document.getElementById('help-modal').addEventListener('click', (e) => { if (e.target === document.getElementById('help-modal')) closeHelp(); });
+
+// ── SHARE ──
+function getWinnersByRound() {
+  const rounds = [];
+  const names = ["Round of 32","Round of 16","Quarterfinals","Semifinals","Final"];
+  for (let r = 0; r < 5; r++) {
+    const picks = [];
+    for (let m = 0; m < ROUND_SIZES[r]; m++) {
+      const mt = state[r][m];
+      if (mt && mt.winner) picks.push({ name: mt.winner.n, code: mt.winner.c, round: names[r], r });
+    }
+    rounds.push(picks);
+  }
+  return rounds;
+}
+
+function buildShareText() {
+  const champ = state[4][0]?.winner;
+  const rounds = getWinnersByRound();
+  const sf = rounds[3].map(p => p.name).join(' vs ');
+  const qf = rounds[2].map(p => p.name).join(', ');
+  let txt = `🏆 My #WorldCup2026 bracket prediction!\n\n`;
+  if (champ) txt += `🥇 Champion: ${champ.n}\n`;
+  if (sf)    txt += `🏅 Semis: ${sf}\n`;
+  if (qf)    txt += `⚽ QF: ${qf}\n`;
+  txt += `\nMake your own at fifa-bracket-2026.app`;
+  return txt;
+}
+
+function buildBracketCardHTML(forCanvas) {
+  const rounds = getWinnersByRound();
+  const champ = state[4][0]?.winner;
+  const totalPicks = rounds.reduce((a,b)=>a+b.length,0);
+  const roundDefs = [
+    { label:'Round of 32', idx:0 },
+    { label:'Round of 16', idx:1 },
+    { label:'Quarterfinals', idx:2 },
+    { label:'Semifinals', idx:3 },
+  ];
+
+  const roundsHTML = roundDefs.map(({label, idx}) => {
+    const picks = rounds[idx];
+    if (!picks.length) return '';
+    const pills = picks.map(p => `
+      <div class="sbc-team-pill${idx>=2?' winner-pill':''}">
+        <img class="sbc-pill-flag" src="${flagUrl(p.code,'w40')}" alt="" crossorigin="anonymous" />
+        <span class="sbc-pill-name">${p.name}</span>
+      </div>`).join('');
+    return `<div class="sbc-round-row">
+      <div class="sbc-round-label">${label}</div>
+      <div class="sbc-teams-row">${pills}</div>
+    </div>`;
+  }).join('');
+
+  return `
+    <div class="sbc-header">
+      <div class="sbc-logo"><div class="sbc-badge">FIFA</div> World Cup 2026™ · My Predictions</div>
+      <div class="sbc-meta"><b>${totalPicks}</b> / 31 picks made</div>
+    </div>
+    ${champ ? `
+    <div class="sbc-champ">
+      <img class="sbc-champ-flag" src="${flagUrl(champ.c,'w160')}" alt="" crossorigin="anonymous" />
+      <div>
+        <div class="sbc-champ-label">🏆 My World Champion</div>
+        <div class="sbc-champ-name">${champ.n}</div>
+      </div>
+    </div>` : `<div class="sbc-no-champ">No champion picked yet — keep going!</div>`}
+    <div class="sbc-rounds">${roundsHTML}</div>
+    <div class="sbc-footer">fifa-bracket-2026.app · Build and share your own World Cup 2026 bracket!</div>
+  `;
+}
+
+function buildShareCard() {
+  // Preview: show a live scaled-down snapshot hint — actual capture happens on demand
+  const preview = document.getElementById('share-preview-card');
+  preview.innerHTML = `<div style="text-align:center;padding:18px 10px;color:#7a90b0;font-size:0.82rem;line-height:1.6;">
+    🖼️ Your full bracket will be captured as displayed on screen.<br>
+    <span style="font-size:0.72rem;color:#3a4a60;">Click <b style="color:#3b82f6;">Download Image</b> to generate it.</span>
+  </div>`;
+}
+
+document.getElementById('btn-share').addEventListener('click', () => {
+  buildShareCard();
+  document.getElementById('share-modal').classList.add('show');
+});
+document.getElementById('share-close').addEventListener('click', () => document.getElementById('share-modal').classList.remove('show'));
+document.getElementById('share-modal').addEventListener('click', (e) => { if (e.target === document.getElementById('share-modal')) document.getElementById('share-modal').classList.remove('show'); });
+
+async function captureShareCard() {
+  const gen = document.getElementById('share-generating');
+  const modal = document.getElementById('share-modal');
+  gen.style.display = 'block';
+  try {
+    if (!window.html2canvas) {
+      await new Promise((res, rej) => {
+        const s = document.createElement('script');
+        s.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
+        s.onload = res; s.onerror = rej; document.head.appendChild(s);
+      });
+    }
+
+    // Hide modal, header, and confetti canvas so they don't appear in screenshot
+    modal.style.display = 'none';
+    const header = document.querySelector('header');
+    const headerDisplay = header.style.display;
+    header.style.display = 'none';
+
+    // Brief pause for DOM to repaint
+    await new Promise(r => setTimeout(r, 120));
+
+    const fullW = document.documentElement.scrollWidth;
+    const fullH = document.documentElement.scrollHeight;
+
+    const canvas = await html2canvas(document.body, {
+      backgroundColor: '#0f172a',
+      scale: 2,
+      useCORS: true,
+      logging: false,
+      x: 0,
+      y: 0,
+      width: fullW,
+      height: fullH,
+      windowWidth: fullW,
+      windowHeight: fullH,
+      scrollX: 0,
+      scrollY: 0
+    });
+
+    // Restore modal + header
+    header.style.display = headerDisplay;
+    modal.style.display = '';
+    modal.classList.add('show');
+
+    // Add branded footer strip
+    const FOOTER_H = 52;
+    const out = document.createElement('canvas');
+    out.width  = canvas.width;
+    out.height = canvas.height + FOOTER_H * 2;
+    const ctx = out.getContext('2d');
+    ctx.fillStyle = '#080f1e';
+    ctx.fillRect(0, 0, out.width, out.height);
+    ctx.drawImage(canvas, 0, 0);
+    ctx.fillStyle = '#0a1320';
+    ctx.fillRect(0, canvas.height, out.width, FOOTER_H * 2);
+    // gold line
+    ctx.fillStyle = '#f59e0b';
+    ctx.fillRect(0, canvas.height, out.width, 3);
+    ctx.fillStyle = '#f59e0b';
+    ctx.font = `bold ${32}px 'Segoe UI', system-ui, sans-serif`;
+    ctx.textAlign = 'center';
+    ctx.fillText('🏆 FIFA World Cup 2026™ · My Bracket Predictions', out.width / 2, canvas.height + FOOTER_H);
+    ctx.fillStyle = '#3a4a60';
+    ctx.font = `${20}px 'Segoe UI', system-ui, sans-serif`;
+    ctx.fillText('fifa-bracket-2026.app', out.width / 2, canvas.height + FOOTER_H * 1.65);
+
+    gen.style.display = 'none';
+    return out;
+  } catch(e) {
+    console.error(e);
+    // Always restore modal on error
+    modal.style.display = '';
+    modal.classList.add('show');
+    document.querySelector('header').style.display = '';
+    gen.style.display = 'none';
+    return null;
+  }
+}
+
+let cachedCanvas = null;
+
+async function getOrCaptureCanvas() {
+  if (!cachedCanvas) cachedCanvas = await captureShareCard();
+  return cachedCanvas;
+}
+
+document.getElementById('share-download').addEventListener('click', async () => {
+  cachedCanvas = null; // always fresh screenshot
+  const canvas = await getOrCaptureCanvas();
+  if (!canvas) { alert('Image generation failed — try Copy Text instead.'); return; }
+  // Show preview in modal
+  const preview = document.getElementById('share-preview-card');
+  preview.innerHTML = '';
+  const img = document.createElement('img');
+  img.src = canvas.toDataURL('image/png');
+  img.style.cssText = 'width:100%;border-radius:6px;display:block;';
+  preview.appendChild(img);
+  const a = document.createElement('a');
+  a.download = 'worldcup2026-my-bracket.png';
+  a.href = canvas.toDataURL('image/png');
+  a.click();
+});
+
+document.getElementById('share-twitter').addEventListener('click', () => {
+  window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(buildShareText())}`, '_blank');
+});
+
+document.getElementById('share-facebook').addEventListener('click', async () => {
+  const url = location.href;
+  const isLocal = url.startsWith('file://') || url.includes('localhost') || url.includes('127.0.0.1');
+  if (isLocal) {
+    // Can't use Facebook sharer with a local file — download image instead
+    cachedCanvas = null;
+    const canvas = await getOrCaptureCanvas();
+    if (canvas) {
+      const a = document.createElement('a');
+      a.download = 'worldcup2026-my-bracket.png';
+      a.href = canvas.toDataURL('image/png');
+      a.click();
+      const preview = document.getElementById('share-preview-card');
+      preview.innerHTML = '';
+      const img = document.createElement('img');
+      img.src = canvas.toDataURL('image/png');
+      img.style.cssText = 'width:100%;border-radius:6px;display:block;';
+      preview.appendChild(img);
+    }
+    setTimeout(() => alert('📘 Facebook tip:\n\nYour bracket image has been downloaded!\n\nGo to Facebook → Create Post → Add Photo, then upload the image from your downloads.'), 600);
+  } else {
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+  }
+});
+
+document.getElementById('share-whatsapp').addEventListener('click', () => {
+  window.open(`https://wa.me/?text=${encodeURIComponent(buildShareText())}`, '_blank');
+});
+
+document.getElementById('share-telegram').addEventListener('click', () => {
+  window.open(`https://t.me/share/url?url=${encodeURIComponent(location.href)}&text=${encodeURIComponent(buildShareText())}`, '_blank');
+});
+
+document.getElementById('share-reddit').addEventListener('click', () => {
+  window.open(`https://www.reddit.com/submit?url=${encodeURIComponent(location.href)}&title=${encodeURIComponent('My FIFA World Cup 2026 bracket predictions!')}`, '_blank');
+});
+
+document.getElementById('share-instagram').addEventListener('click', async () => {
+  cachedCanvas = null;
+  const canvas = await getOrCaptureCanvas();
+  if (!canvas) { alert('Could not generate image.'); return; }
+  // Download the image first
+  const a = document.createElement('a');
+  a.download = 'worldcup2026-my-bracket.png';
+  a.href = canvas.toDataURL('image/png');
+  a.click();
+  // Show preview
+  const preview = document.getElementById('share-preview-card');
+  preview.innerHTML = '';
+  const img = document.createElement('img');
+  img.src = canvas.toDataURL('image/png');
+  img.style.cssText = 'width:100%;border-radius:6px;display:block;';
+  preview.appendChild(img);
+  setTimeout(() => alert('📸 Bracket image saved!\n\nOpen Instagram → tap + → select the image from your downloads to post it or add it to your Story.'), 600);
+});
+
+document.getElementById('share-copy').addEventListener('click', () => {
+  navigator.clipboard.writeText(buildShareText()).then(() => {
+    const btn = document.getElementById('share-copy');
+    const orig = btn.innerHTML; btn.innerHTML = '✅ Copied!';
+    setTimeout(() => btn.innerHTML = orig, 2000);
+  });
+});
+
 initState(); build();
+
+// Auto-show help on first visit
+if (!localStorage.getItem(HELP_KEY)) openHelp();
 </script>
 </body>
 </html>
